@@ -13,27 +13,12 @@ router.get('/videos', (req, res) => {
 
 router.get('/videos/:id', (req, res) => {
     const allVideos = getVideo();
-
+    const id = req.params.id;
+    console.log(req.params.id)
+    let targetVideo = allVideos.find( video => video.id === id)
+    res.send(targetVideo)
 })
 
 
 module.exports = router;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-module.exports = router;
