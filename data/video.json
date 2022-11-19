@@ -299,5 +299,18 @@
         "timestamp": 1632496261000
       }
     ]
+  },
+  {
+    "id": "5cecb75d-8372-4c91-961c-086907aa2a6e",
+    "title": "art creation program",
+    "channel": "Red Cow",
+    "image": "http://localhost:8080/images/example.jpg",
+    "description": "a beautiful studio and A amazing experience!!!",
+    "views": "1,001,023",
+    "likes": "110,985",
+    "duration": "4:01",
+    "video": "https://project-2-api.herokuapp.com/stream",
+    "timestamp": 1668830591610,
+    "comments": []
   }
 ]

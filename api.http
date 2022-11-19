@@ -7,15 +7,6 @@ POST http://localhost:8080/videos HTTP/1.1
 content-type: application/json
 
 { 
-            "id": "sample",
-            "title": "title",
-            "channel": "Red Cow",
-            "image": "http://localhost:8080/images/example.jpg",
-            "description": "description",
-            "views": "1,001,023",
-            "likes": "110,985",
-            "duration": "4:01",
-            "video": "https://project-2-api.herokuapp.com/stream",
-            "timestamp": "Date",
-            "comments": [] 
-        }
+    "title": "title",
+    "description": "description"
+}
