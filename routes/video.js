@@ -30,17 +30,24 @@ router.get('/videos/:id', (req, res) => {
     const id = req.params.id;
     console.log(req.params.id)
     let targetVideo = allVideos.find( video => video.id === id)
+   
+    if (!targetVideo){
+        return res.status(404).send('Video not found.')
+    }
     res.send(targetVideo)
 })
 
 router.post('/videos', (req, res) => {
     const title = req.body.title
     const description = req.body.description
+    if (title == "" || description == ""){
+        return res.status(400).send('Form error')
+    }
 
     let videoInfo = { 
             id: uuidv4(),
             title: title,
-            channel: "Red Cow",
+            channel: "Melody Chung",
             image: "http://localhost:8080/images/example.jpg",
             description: description,
             views: "1,001,023",
@@ -53,10 +60,13 @@ router.post('/videos', (req, res) => {
 
     const allVideos = getVideo();
     allVideos.push(videoInfo)
-    console.log(allVideos)
 
     fs.writeFileSync('./data/video.json', JSON.stringify(allVideos))
     return res.json({videoInfo})
+})
+
+router.post('/videos/:id/comments', (req, res) =>{
+    
 })
 
 module.exports = router;

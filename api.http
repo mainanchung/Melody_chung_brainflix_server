@@ -7,6 +7,6 @@ POST http://localhost:8080/videos HTTP/1.1
 content-type: application/json
 
 { 
-    "title": "title",
-    "description": "description"
+    "title": "Going to test it out!",
+    "description": "If you’re used to working with icon fonts, one thing you might enjoy about them is how easy it is to change the color. You’re largely limited to a single color with icon fonts in a way that SVG isn’t, but still, it is appealingly easy to change that single color with color. Using inline SVG allows you to set the fill, which cascades to all the elements within the SVG, or you can fill each element separately if needed."
 }
