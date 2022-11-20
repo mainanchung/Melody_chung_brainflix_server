@@ -10,7 +10,7 @@ const getVideo = () => {
 }
 
 router.get('/videos', (req, res) => {
-    const videos =  getVideo();
+    const videos =  getVideo()
     let resObj = videos.map(ele =>{
         
         let data=
@@ -26,8 +26,8 @@ router.get('/videos', (req, res) => {
 });
 
 router.get('/videos/:id', (req, res) => {
-    const allVideos = getVideo();
-    const id = req.params.id;
+    const allVideos = getVideo()
+    const id = req.params.id
     console.log(req.params.id)
     let targetVideo = allVideos.find( video => video.id === id)
    
@@ -66,7 +66,27 @@ router.post('/videos', (req, res) => {
 })
 
 router.post('/videos/:id/comments', (req, res) =>{
-    
+    const comment = req.body.comment
+    const allVideos = getVideo()
+    const id = req.params.id
+    let targetVideo = allVideos.find( video => video.id === id)
+    let targetCommentField = targetVideo.comments
+
+    if (comment == ""){
+        return res.status(400).send('Form error')
+    }
+
+    let postComment = {
+        id:uuidv4(),
+        name: "Melody",
+        comment: comment,
+        timestamp: Date.now()
+      }
+
+    targetCommentField.push(postComment)
+    // console.log(targetCommentField)
+    fs.writeFileSync('./data/video.json', JSON.stringify(allVideos))
+    return res.json({postComment})
 })
 
 module.exports = router;
