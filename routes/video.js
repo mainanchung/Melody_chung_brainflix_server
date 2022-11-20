@@ -4,11 +4,12 @@ const fs = require('fs')
 const router = express.Router()
 const { v4: uuidv4 } = require('uuid');
 
-
+//default videos
 const getVideo = () => {
     return JSON.parse(fs.readFileSync("./data/video.json"))
 }
 
+//get all videos
 router.get('/videos', (req, res) => {
     const videos =  getVideo()
     let resObj = videos.map(ele =>{
@@ -25,6 +26,7 @@ router.get('/videos', (req, res) => {
     res.json(resObj);
 });
 
+//get target video with id
 router.get('/videos/:id', (req, res) => {
     const allVideos = getVideo()
     const id = req.params.id
@@ -37,6 +39,7 @@ router.get('/videos/:id', (req, res) => {
     res.send(targetVideo)
 })
 
+//post new video 
 router.post('/videos', (req, res) => {
     const title = req.body.title
     const description = req.body.description
@@ -65,6 +68,7 @@ router.post('/videos', (req, res) => {
     return res.json({videoInfo})
 })
 
+//post new comment to target video
 router.post('/videos/:id/comments', (req, res) =>{
     const comment = req.body.comment
     const allVideos = getVideo()
@@ -84,7 +88,6 @@ router.post('/videos/:id/comments', (req, res) =>{
       }
 
     targetCommentField.push(postComment)
-    // console.log(targetCommentField)
     fs.writeFileSync('./data/video.json', JSON.stringify(allVideos))
     return res.json({postComment})
 })
