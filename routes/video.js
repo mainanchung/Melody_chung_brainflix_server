@@ -82,7 +82,7 @@ router.post('/videos/:id/comments', (req, res) =>{
 
     let postComment = {
         id:uuidv4(),
-        name: "Melody",
+        name: "Melody Chung",
         comment: comment,
         timestamp: Date.now()
       }
